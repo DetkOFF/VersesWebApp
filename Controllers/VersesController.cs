@@ -25,6 +25,21 @@ namespace VersesWebApp.Controllers
             return View(await _context.Verse.ToListAsync());
         }
 
+        // GET: Verses/ShowSearchForm
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return View();
+        }
+
+        // PoST: Verses/ShowSearchResults
+        public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
+        {
+            return View("Index", await _context.Verse.Where( 
+                j => j.VerseText.Contains(SearchPhrase) ||
+                j.Author.Contains(SearchPhrase)
+                ).ToListAsync());
+        }
+
         // GET: Verses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
