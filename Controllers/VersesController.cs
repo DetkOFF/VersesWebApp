@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +32,7 @@ namespace VersesWebApp.Controllers
             return View();
         }
 
-        // PoST: Verses/ShowSearchResults
+        // POST: Verses/ShowSearchResults
         public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
         {
             return View("Index", await _context.Verse.Where( 
@@ -59,6 +60,7 @@ namespace VersesWebApp.Controllers
         }
 
         // GET: Verses/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -67,6 +69,7 @@ namespace VersesWebApp.Controllers
         // POST: Verses/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,VerseText,Author")] Verse verse)
@@ -81,6 +84,7 @@ namespace VersesWebApp.Controllers
         }
 
         // GET: Verses/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -99,6 +103,7 @@ namespace VersesWebApp.Controllers
         // POST: Verses/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,VerseText,Author")] Verse verse)
@@ -132,6 +137,7 @@ namespace VersesWebApp.Controllers
         }
 
         // GET: Verses/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,6 +156,7 @@ namespace VersesWebApp.Controllers
         }
 
         // POST: Verses/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
