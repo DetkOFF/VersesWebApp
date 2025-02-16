@@ -20,3 +20,13 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.multiline {
+    white-space: pre-wrap;
+}
+.margin-top{
+    margin-top: 6px;
+}
+textarea {
+    height: 200px;
+}
