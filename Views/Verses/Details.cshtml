@@ -10,12 +10,7 @@
     <h4>Verse</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VerseText)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VerseText)
-        </dd>
+        <dd class="col-sm-10, multiline">@Html.DisplayFor(model => model.VerseText)</dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Author)
         </dt>
